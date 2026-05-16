@@ -1,0 +1,12 @@
+{
+  "name": "megafleet-careers",
+  "version": "1.0.0",
+  "description": "Mega Fleet Corp Freight Broker Careers Site",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
