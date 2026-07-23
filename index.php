@@ -61,6 +61,10 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     pointer-events:none;z-index:1;text-align:center}
   .stars-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:15px 30px;opacity:.13}
   .stars-label{margin-top:14px;color:rgba(159,184,255,.28);font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:6px}
+  .usmap{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(1100px,120vw);
+    max-width:none;pointer-events:none;z-index:0;opacity:.16;
+    filter:drop-shadow(0 0 18px rgba(91,141,239,.55));animation:mapGlow 6s ease-in-out infinite}
+  @keyframes mapGlow{0%,100%{opacity:.13}50%{opacity:.22}}
   .floor{position:absolute;left:0;right:0;bottom:0;height:46%;overflow:hidden;perspective:340px;pointer-events:none}
   .floor-grid{position:absolute;inset:-20% -20% -40% -20%;transform:rotateX(68deg);
     background-image:linear-gradient(rgba(90,150,255,.55) 2px, transparent 2px), linear-gradient(90deg, rgba(90,150,255,.35) 2px, transparent 2px);
@@ -88,8 +92,15 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     -webkit-mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
     mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
     filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
-  .wheel{position:absolute;transform:translate(-50%,-50%);border-radius:50%;
-    animation:wheelSpin .5s linear infinite;will-change:transform;pointer-events:none}
+  .speed-lines{position:absolute;left:-6%;top:58%;width:34%;height:14%;pointer-events:none;opacity:.5}
+  .speed-line{position:absolute;left:0;height:2px;border-radius:2px;
+    background:linear-gradient(90deg, transparent, rgba(127,217,255,.85), transparent);
+    animation:speedDrift 0.7s linear infinite}
+  @keyframes speedDrift{from{transform:translateX(30px);opacity:0}10%{opacity:1}to{transform:translateX(-90px);opacity:0}}
+  .dust{position:absolute;left:2%;bottom:12%;width:16%;height:20%;pointer-events:none;
+    background:radial-gradient(ellipse at 60% 60%, rgba(180,190,210,.35), transparent 70%);
+    filter:blur(6px);opacity:.6;animation:dustPulse 1.6s ease-in-out infinite}
+  @keyframes dustPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.6;transform:scale(1.08)}}
   .road-dash{position:absolute;left:4%;right:4%;bottom:22px;height:3px;
     background:repeating-linear-gradient(90deg,#5b8def 0 40px,transparent 40px 80px);opacity:.55;
     animation:dashDrift 1.1s linear infinite}
@@ -135,8 +146,7 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
   .launch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,180px));gap:40px 48px;
     justify-content:center;margin-top:64px;margin-bottom:60px;max-width:760px;width:100%;
     position:relative;z-index:2;margin-left:auto;margin-right:auto}
-  .tile{display:flex;flex-direction:column;align-items:center;gap:16px;
-    animation:floatIn .6s cubic-bezier(.22,1,.36,1) both;cursor:pointer}
+  .tile{display:flex;flex-direction:column;align-items:center;gap:16px;cursor:pointer}
   .tile-ico{width:132px;height:132px;border-radius:30px;
     box-shadow:0 18px 40px -12px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
     display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
@@ -167,12 +177,14 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="stars-label">48 STATES · ONE FLEET</div>
   </div>
 
+  <img class="usmap" src="/assets/us-map-48.svg" alt="" aria-hidden="true">
+
   <div class="floor"><div class="floor-grid"></div></div>
 
 <?php if ($authed): ?>
 
   <a href="/logout.php" class="logout">Sign out</a>
-  <div style="position:relative;z-index:5;animation:floatUp .7s ease both;">
+  <div style="position:relative;z-index:5;">
     <div class="launch-badge-wrap">
       <div class="launch-badge">
         <div class="launch-badge-ico">
@@ -233,12 +245,13 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="truck-scene">
       <div class="ground-glow"></div>
       <div class="truck-wrap">
-        <img class="rig" src="/assets/megafleet-rig.png" alt="MegaFleet Corp 18-wheeler">
-        <img class="wheel" src="/assets/wheel-steer.png"  style="left:20%;   top:65.5%; width:6.2%;">
-        <img class="wheel" src="/assets/wheel-drive1.png" style="left:49%;   top:65.5%; width:5.2%;">
-        <img class="wheel" src="/assets/wheel-drive2.png" style="left:54%;   top:65.5%; width:5.2%;">
-        <img class="wheel" src="/assets/wheel-trail1.png" style="left:86%;   top:65.5%; width:5.2%;">
-        <img class="wheel" src="/assets/wheel-trail2.png" style="left:90.5%; top:65.5%; width:5.2%;">
+        <img class="rig" src="/assets/megafleet-rig-driving.png" alt="MegaFleet Corp 18-wheeler on the road">
+        <div class="speed-lines">
+          <div class="speed-line" style="top:10%; width:70%; animation-delay:0s;"></div>
+          <div class="speed-line" style="top:45%; width:100%; animation-delay:.15s;"></div>
+          <div class="speed-line" style="top:75%; width:55%; animation-delay:.3s;"></div>
+        </div>
+        <div class="dust"></div>
       </div>
       <div class="road-dash"></div>
       <div class="road-line"></div>
