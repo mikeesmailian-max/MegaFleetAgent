@@ -43,8 +43,6 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
   a{color:inherit;text-decoration:none}
   input:focus{outline:none}
 
-  @keyframes wheelSpin{to{transform:rotate(360deg)}}
-  @keyframes truckBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
   @keyframes gridScroll{to{transform:translateY(40px)}}
   @keyframes dashDrift{to{transform:translateX(-1400px)}}
   @keyframes scanline{0%{transform:translateX(-60%);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateX(60%);opacity:0}}
