@@ -3,104 +3,103 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mega Fleet Logistics Inc. — Team Portal</title>
+<title>MegaFleet — Employee Portal</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Mega Fleet Logistics Inc. internal team portal.">
+<meta name="description" content="MegaFleet internal employee portal.">
 <link rel="canonical" href="https://megafleetai.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0e0e0e; --panel:#161616; --red:#C41230; --red-lt:#e11a3c;
-    --ink:#f5f5f5; --muted:#8a8a8a; --line:rgba(255,255,255,.08);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    background:
-      radial-gradient(1200px 600px at 50% -10%, rgba(196,18,48,.16), transparent 60%),
-      var(--bg);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    min-height:100%;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:48px 20px;
-    -webkit-font-smoothing:antialiased;
-  }
-  header{text-align:center;margin-bottom:52px}
-  .wordmark{
-    font-weight:900;letter-spacing:3px;font-size:clamp(30px,6vw,52px);
-    line-height:1;
-  }
-  .wordmark .f{color:var(--red)}
-  .tagline{
-    margin-top:14px;color:var(--muted);font-size:14px;letter-spacing:.14em;
-    text-transform:uppercase;font-weight:600;
-  }
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:clamp(20px,5vw,56px);
-    width:100%;max-width:440px;
-  }
-  @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);max-width:360px;gap:28px}}
-  .app{
-    display:flex;flex-direction:column;align-items:center;gap:14px;
-    text-decoration:none;color:var(--ink);
-    transition:transform .18s ease;
-  }
-  .app:hover{transform:translateY(-6px)}
-  .icon{
-    width:clamp(96px,22vw,132px);height:clamp(96px,22vw,132px);
-    border-radius:26%;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.14);
-    transition:box-shadow .2s ease, transform .2s ease;
-  }
-  .app:hover .icon{box-shadow:0 18px 44px rgba(196,18,48,.42), inset 0 1px 0 rgba(255,255,255,.18)}
-  .icon::after{ /* glossy highlight */
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 42%);
-    pointer-events:none;
-  }
-  .icon svg{width:52%;height:52%;position:relative;z-index:1}
-  .i-driver{background:linear-gradient(160deg,#2b2b2b,#101010)}
-  .i-pay{background:linear-gradient(160deg,#d21534,#8f0d24)}
-  .i-agents{background:linear-gradient(160deg,#3a3a3a,#1a1a1a)}
-  .label{font-size:15px;font-weight:600;letter-spacing:.01em}
-  .sub{font-size:12px;color:var(--muted);margin-top:-8px;text-align:center;max-width:150px;line-height:1.35}
-  footer{margin-top:60px;color:var(--muted);font-size:12px;letter-spacing:.05em;text-align:center}
-  footer .dot{color:var(--red);margin:0 8px}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  @keyframes floatIn{from{opacity:0;transform:translateY(24px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+  .stage{min-height:100vh;width:100%;display:flex;flex-direction:column;align-items:center;
+    background:radial-gradient(circle at 25% 15%, #2a3a63 0%, #141b30 45%, #0a0e1a 100%);
+    position:relative;overflow:hidden;padding:0 24px}
+  .blob{position:absolute;border-radius:50%;filter:blur(20px);pointer-events:none}
+  .blob-a{top:-120px;right:-80px;width:460px;height:460px;background:radial-gradient(circle, rgba(94,132,255,.28), transparent 70%)}
+  .blob-b{bottom:-140px;left:-100px;width:520px;height:520px;background:radial-gradient(circle, rgba(64,196,180,.20), transparent 70%)}
+
+  .badge-wrap{text-align:center;margin-top:84px;margin-bottom:8px;position:relative;z-index:2}
+  .badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+  .badge-ico{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#6c8cff,#3f5bd8);
+    display:flex;align-items:center;justify-content:center}
+  .badge-txt{color:rgba(255,255,255,.9);font-size:14px;font-weight:600;letter-spacing:.2px}
+
+  h1{color:#fff;font-size:40px;font-weight:700;letter-spacing:-.02em;margin-top:28px;text-align:center;position:relative;z-index:2}
+  .subtitle{color:rgba(255,255,255,.55);font-size:16px;margin-top:10px;text-align:center;position:relative;z-index:2}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,180px));gap:40px 48px;
+    justify-content:center;margin-top:64px;margin-bottom:90px;max-width:760px;width:100%;position:relative;z-index:2}
+
+  .tile{display:flex;flex-direction:column;align-items:center;gap:16px;
+    animation:floatIn .6s cubic-bezier(.22,1,.36,1) both;cursor:pointer}
+  .tile-ico{width:132px;height:132px;border-radius:30px;
+    box-shadow:0 18px 40px -12px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.25);
+    display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+  .tile:hover .tile-ico{transform:translateY(-8px) scale(1.06)}
+  .tile-ico .gloss{position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.28),transparent 55%);pointer-events:none}
+  .tile-ico .glyph{width:68px;height:68px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+  .tile-name{color:#fff;font-size:16px;font-weight:600;letter-spacing:-.01em;text-align:center}
+  .tile-sub{color:rgba(255,255,255,.5);font-size:12.5px;margin-top:4px;line-height:1.35;max-width:160px;text-align:center}
+
+  .foot{margin-top:auto;margin-bottom:32px;color:rgba(255,255,255,.35);font-size:12.5px;position:relative;z-index:2;text-align:center}
 </style>
 </head>
 <body>
-  <header>
-    <div class="wordmark">MEGA<span class="f">FLEET</span></div>
-    <div class="tagline">Team Portal</div>
-  </header>
+<div class="stage">
+  <div class="blob blob-a"></div>
+  <div class="blob blob-b"></div>
 
-  <main class="grid">
-    <a class="app" href="https://megafleet-j5k7rjui.manus.space" target="_blank" rel="noopener">
-      <span class="icon i-driver" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M1 5.5h13v9H1z"/><path d="M14 8h4l3 3v3.5h-7z"/>
-          <circle cx="6" cy="17" r="1.9"/><circle cx="17.5" cy="17" r="1.9"/>
-        </svg>
-      </span>
-      <span class="label">Driver Info</span>
-      <span class="sub">Share driver details with brokers</span>
+  <div class="badge-wrap">
+    <div class="badge">
+      <div class="badge-ico">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M3 13l2-5h14l2 5M5 13h14v4a1 1 0 01-1 1h-1a2 2 0 11-4 0H9a2 2 0 11-4 0H5v-4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="badge-txt">MegaFleet</span>
+    </div>
+  </div>
+
+  <h1>Apps</h1>
+  <p class="subtitle">Tap an app to open it</p>
+
+  <div class="grid">
+
+    <a class="tile" href="https://megafleet-j5k7rjui.manus.space" target="_blank" rel="noopener">
+      <div class="tile-ico" style="background:linear-gradient(160deg,#5b8def,#2f5bd0)">
+        <div class="gloss"></div>
+        <div class="glyph">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="#fff" stroke-width="1.6"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M16 8h5M16 12h5M16 16h3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity="0.85"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="tile-name">Dispatch Share</div>
+        <div class="tile-sub">Share driver info with brokers</div>
+      </div>
     </a>
 
-    <a class="app" href="https://megafleetpay-kxkqjvmf.manus.space" target="_blank" rel="noopener">
-      <span class="icon i-pay" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 9.5h20"/><path d="M6 15h4"/>
-        </svg>
-      </span>
-      <span class="label">Payments</span>
-      <span class="sub">Charge cards for transactions</span>
+    <a class="tile" href="https://megafleetpay-kxkqjvmf.manus.space" target="_blank" rel="noopener">
+      <div class="tile-ico" style="background:linear-gradient(160deg,#3ecf8e,#17a06b)">
+        <div class="gloss"></div>
+        <div class="glyph">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none"><rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="#fff" stroke-width="1.6"/><path d="M3 9.5h18" stroke="#fff" stroke-width="1.6"/><path d="M6.5 14.5h4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <div>
+        <div class="tile-name">MegaFleet Pay</div>
+        <div class="tile-sub">Charge cards for transactions</div>
+      </div>
     </a>
-  </main>
 
-  <footer>Mega Fleet Logistics Inc. <span class="dot">•</span> Authorized personnel only</footer>
+  </div>
+
+  <div class="foot">MegaFleet Corp · Internal Employee Portal</div>
+</div>
 </body>
 </html>
