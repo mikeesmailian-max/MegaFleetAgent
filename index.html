@@ -37,9 +37,9 @@
   }
   .grid{
     display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:clamp(20px,5vw,56px);
-    width:100%;max-width:640px;
+    width:100%;max-width:440px;
   }
   @media(max-width:560px){.grid{grid-template-columns:repeat(2,1fr);max-width:360px;gap:28px}}
   .app{
@@ -98,17 +98,6 @@
       </span>
       <span class="label">Payments</span>
       <span class="sub">Charge cards for transactions</span>
-    </a>
-
-    <a class="app" href="/agents">
-      <span class="icon i-agents" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="8.5" cy="9" r="2.6"/><path d="M3.5 18.5c0-2.8 2.2-4.6 5-4.6s5 1.8 5 4.6"/>
-          <circle cx="16.5" cy="10" r="2.1"/><path d="M15 14.2c2.4.2 4.5 1.8 4.5 4.3"/>
-        </svg>
-      </span>
-      <span class="label">Agents</span>
-      <span class="sub">Broker partner site</span>
     </a>
   </main>
 
