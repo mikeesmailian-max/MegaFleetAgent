@@ -87,23 +87,13 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
   .truck-scene{position:relative;width:100%;max-width:680px;margin:24px 0 6px;animation:floatUp 1s ease .15s both}
   .ground-glow{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:74%;height:40px;
     background:radial-gradient(ellipse, rgba(91,141,239,.4), transparent 70%);filter:blur(14px);pointer-events:none}
-  .truck-wrap{position:relative;animation:truckBob 3.4s ease-in-out infinite;will-change:transform}
+  .truck-wrap{position:relative}
   .truck-wrap img.rig{display:block;width:100%;height:auto;
     -webkit-mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
     mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
     filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
-  .speed-lines{position:absolute;left:-6%;top:58%;width:34%;height:14%;pointer-events:none;opacity:.5}
-  .speed-line{position:absolute;left:0;height:2px;border-radius:2px;
-    background:linear-gradient(90deg, transparent, rgba(127,217,255,.85), transparent);
-    animation:speedDrift 0.7s linear infinite}
-  @keyframes speedDrift{from{transform:translateX(30px);opacity:0}10%{opacity:1}to{transform:translateX(-90px);opacity:0}}
-  .dust{position:absolute;left:2%;bottom:12%;width:16%;height:20%;pointer-events:none;
-    background:radial-gradient(ellipse at 60% 60%, rgba(180,190,210,.35), transparent 70%);
-    filter:blur(6px);opacity:.6;animation:dustPulse 1.6s ease-in-out infinite}
-  @keyframes dustPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.6;transform:scale(1.08)}}
   .road-dash{position:absolute;left:4%;right:4%;bottom:22px;height:3px;
-    background:repeating-linear-gradient(90deg,#5b8def 0 40px,transparent 40px 80px);opacity:.55;
-    animation:dashDrift 1.1s linear infinite}
+    background:repeating-linear-gradient(90deg,#5b8def 0 40px,transparent 40px 80px);opacity:.55}
   .road-line{position:absolute;left:0;right:0;bottom:16px;height:2px;
     background:linear-gradient(90deg, transparent, rgba(91,141,239,.5), transparent)}
 
@@ -245,13 +235,7 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="truck-scene">
       <div class="ground-glow"></div>
       <div class="truck-wrap">
-        <img class="rig" src="/assets/megafleet-rig-driving.png" alt="MegaFleet Corp 18-wheeler on the road">
-        <div class="speed-lines">
-          <div class="speed-line" style="top:10%; width:70%; animation-delay:0s;"></div>
-          <div class="speed-line" style="top:45%; width:100%; animation-delay:.15s;"></div>
-          <div class="speed-line" style="top:75%; width:55%; animation-delay:.3s;"></div>
-        </div>
-        <div class="dust"></div>
+        <img class="rig" src="/assets/megafleet-rig.png" alt="MegaFleet Corp 18-wheeler">
       </div>
       <div class="road-dash"></div>
       <div class="road-line"></div>
