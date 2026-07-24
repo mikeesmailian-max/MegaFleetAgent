@@ -59,10 +59,6 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     pointer-events:none;z-index:1;text-align:center}
   .stars-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:15px 30px;opacity:.13}
   .stars-label{margin-top:14px;color:rgba(159,184,255,.28);font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:6px}
-  .usmap{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:min(1100px,120vw);
-    max-width:none;pointer-events:none;z-index:0;opacity:.16;
-    filter:drop-shadow(0 0 18px rgba(91,141,239,.55));animation:mapGlow 6s ease-in-out infinite}
-  @keyframes mapGlow{0%,100%{opacity:.13}50%{opacity:.22}}
   .floor{position:absolute;left:0;right:0;bottom:0;height:46%;overflow:hidden;perspective:340px;pointer-events:none}
   .floor-grid{position:absolute;inset:-20% -20% -40% -20%;transform:rotateX(68deg);
     background-image:linear-gradient(rgba(90,150,255,.55) 2px, transparent 2px), linear-gradient(90deg, rgba(90,150,255,.35) 2px, transparent 2px);
@@ -82,14 +78,12 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     text-align:center}
   .subtitle{color:rgba(159,184,255,.75);font-size:15px;margin-top:16px;letter-spacing:.5px;text-align:center}
 
-  .truck-scene{position:relative;width:100%;max-width:680px;margin:24px 0 6px;animation:floatUp 1s ease .15s both}
+  .truck-scene{position:relative;width:100%;max-width:820px;margin:24px 0 6px;animation:floatUp 1s ease .15s both}
   .ground-glow{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:74%;height:40px;
     background:radial-gradient(ellipse, rgba(91,141,239,.4), transparent 70%);filter:blur(14px);pointer-events:none}
   .truck-wrap{position:relative}
-  .truck-wrap img.rig{display:block;width:100%;height:auto;
-    -webkit-mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
-    mask-image:radial-gradient(115% 130% at 50% 42%, #000 58%, transparent 82%);
-    filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
+  .truck-wrap img.rig{display:block;width:100%;height:auto;border-radius:12px;
+    filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
   .road-dash{position:absolute;left:4%;right:4%;bottom:22px;height:3px;
     background:repeating-linear-gradient(90deg,#5b8def 0 40px,transparent 40px 80px);opacity:.55}
   .road-line{position:absolute;left:0;right:0;bottom:16px;height:2px;
@@ -165,8 +159,6 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="stars-label">48 STATES · ONE FLEET</div>
   </div>
 
-  <img class="usmap" src="/assets/us-map-48.svg" alt="" aria-hidden="true">
-
   <div class="floor"><div class="floor-grid"></div></div>
 
 <?php if ($authed): ?>
@@ -233,7 +225,7 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="truck-scene">
       <div class="ground-glow"></div>
       <div class="truck-wrap">
-        <img class="rig" src="/assets/megafleet-rig.png" alt="MegaFleet Corp 18-wheeler">
+        <img class="rig" src="/assets/megafleet-hero.png" alt="MegaFleet Corp 18-wheeler driving across America">
       </div>
       <div class="road-dash"></div>
       <div class="road-line"></div>
