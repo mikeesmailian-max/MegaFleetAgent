@@ -82,8 +82,13 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
   .ground-glow{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);width:74%;height:40px;
     background:radial-gradient(ellipse, rgba(91,141,239,.4), transparent 70%);filter:blur(14px);pointer-events:none}
   .truck-wrap{position:relative}
-  .truck-wrap img.rig{display:block;width:100%;height:auto;border-radius:12px;
+  .truck-wrap .rig{display:block;width:100%;height:auto;border-radius:12px;background:#05070f;
     filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+  @media (prefers-reduced-motion: reduce){
+    .floor-grid{animation:none}
+    h1{animation:none}
+    .scanline{display:none}
+  }
   .road-dash{position:absolute;left:4%;right:4%;bottom:22px;height:3px;
     background:repeating-linear-gradient(90deg,#5b8def 0 40px,transparent 40px 80px);opacity:.55}
   .road-line{position:absolute;left:0;right:0;bottom:16px;height:2px;
@@ -225,7 +230,12 @@ $authed = isset($_COOKIE[$COOKIE_KEY]) && hash_equals($EXPECTED, $_COOKIE[$COOKI
     <div class="truck-scene">
       <div class="ground-glow"></div>
       <div class="truck-wrap">
-        <img class="rig" src="/assets/megafleet-hero.png" alt="MegaFleet Corp 18-wheeler driving across America">
+        <video class="rig" poster="/assets/megafleet-hero-poster.jpg"
+               autoplay loop muted playsinline preload="auto" disablepictureinpicture
+               aria-label="MegaFleet Corp 18-wheeler driving across America">
+          <source src="/assets/megafleet-hero.mp4" type="video/mp4">
+          <img src="/assets/megafleet-hero-poster.jpg" alt="MegaFleet Corp 18-wheeler driving across America" style="width:100%;height:auto;display:block">
+        </video>
       </div>
       <div class="road-dash"></div>
       <div class="road-line"></div>
